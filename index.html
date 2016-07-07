@@ -238,8 +238,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/07/test3/" itemprop="url">
-                  test3
+                <a class="post-title-link" href="/2016/07/07/git-pull-or-push-免输入用户名和密码/" itemprop="url">
+                  git pull or push 免输入用户名和密码
                 </a>
               
             
@@ -252,7 +252,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-07T15:17:06+08:00" content="2016-07-07">
+            <time itemprop="dateCreated" datetime="2016-07-07T15:19:25+08:00" content="2016-07-07">
               2016-07-07
             </time>
           </span>
@@ -282,100 +282,17 @@
       
         
           
-            
-          
-        
-      
-    </div>
+            <p>Git 每次进行 ==Pull== 和==Push== 操作时都要输入用户名和密码， 非常不便。  现在只需要增加一个配置文件就可以搞定：</p>
+<h2 id="Linux-Unix-Mac-系统"><a href="#Linux-Unix-Mac-系统" class="headerlink" title="Linux/Unix/Mac 系统"></a>Linux/Unix/Mac 系统</h2><p>用户目录下，新建一个 ~/.netrc 文件(touch .netrc)， 将 git 服务器， 用户名以及密码记录在这个文件， 如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">machine github.com</div><div class="line">login zengshuai        </div><div class="line">password your-password</div></pre></td></tr></table></figure>
+<p>如果有多个 server 就重复上面的三行， 分别输入对应的服务器、 用户名和密码即可；</p>
+<p><strong>~ 表示用户主目录， 如果你的用户名是 zhang ， 那么 ~ 对应的目录是 /Users/zhang 。</strong></p>
+<h2 id="Windows-系统"><a href="#Windows-系统" class="headerlink" title="Windows 系统"></a>Windows 系统</h2><p>在 Windows 平台上， 稍微麻烦一些， 但是也能实现, 需要先添加一个用户变量 %HOME% ， 如下所示：</p>
+<p><img src="http://beginor.github.io/assets/post-images/user-var-home.png" alt="image"></p>
+<p>接下来在 %HOME% 变量指向的目录下新建一个名称为 _netrc 的文件， 内容与上面的一样， 将 git 服务器， 用户名以及密码记录在这个文件， 如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">machine github.com</div><div class="line">login zengshuai        </div><div class="line">password your-password</div></pre></td></tr></table></figure>
+<p>有了 netrc 文件， 使用 git 时就不用再输入用户名和密码了。</p>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/07/test/" itemprop="url">
-                  test
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-07T15:07:54+08:00" content="2016-07-07">
-              2016-07-07
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
           
         
       
@@ -546,7 +463,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
