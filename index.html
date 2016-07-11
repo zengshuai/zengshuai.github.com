@@ -312,8 +312,7 @@
         
           <p>JFinal提供了Db+Record的模式，而其中有一个方法是这样的Db.execute(ICallback),。</p>
 <p>ICallback是JFinal提供的调用存储过程的接口，接口中提供了run方法，用来实现存储过程的调用。</p>
-<p>简单描述代码过程</p>
-<ol>
+<h3 id="简单描述代码过程"><a href="#简单描述代码过程" class="headerlink" title="简单描述代码过程"></a>简单描述代码过程</h3><ol>
 <li><p>在service类中写了一个内部类来实现ICallback接口，并写了一个方法调用内部类。</p>
 </li>
 <li><p>borrow为mysql的存储过程名，其中有两个参数，两个返回值 reason，result为返回值。</p>
@@ -322,6 +321,8 @@
 </li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.sql.CallableStatement;</div><div class="line"><span class="keyword">import</span> java.sql.Connection;</div><div class="line"><span class="keyword">import</span> java.sql.SQLException;</div><div class="line"><span class="keyword">import</span> com.jfinal.plugin.activerecord.Db;</div><div class="line"><span class="keyword">import</span> com.jfinal.plugin.activerecord.DbKit;</div><div class="line"><span class="keyword">import</span> com.jfinal.plugin.activerecord.ICallback;</div></pre></td></tr></table></figure>
+<ol>
+<li>示例代码如下：
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/07/11/JFinal调用Mysql存储过程方法/#more" rel="contents">
               阅读全文 &raquo;

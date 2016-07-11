@@ -87,10 +87,9 @@
 <meta name="description" content="JFinal提供了Db+Record的模式，而其中有一个方法是这样的Db.execute(ICallback),。
 ICallback是JFinal提供的调用存储过程的接口，接口中提供了run方法，用来实现存储过程的调用。
 简单描述代码过程
-
 在service类中写了一个内部类来实现ICallback接口，并写了一个方法调用内部类。
 
-borrow为mysql的存储过程名，其中有两个参数，两个返回">
+borrow为mysql的存储过程名，其中有两个参数，两个返回值">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JFinal调用Mysql存储过程方法">
 <meta property="og:url" content="http://localhost/2016/07/11/JFinal调用Mysql存储过程方法/index.html">
@@ -98,20 +97,18 @@ borrow为mysql的存储过程名，其中有两个参数，两个返回">
 <meta property="og:description" content="JFinal提供了Db+Record的模式，而其中有一个方法是这样的Db.execute(ICallback),。
 ICallback是JFinal提供的调用存储过程的接口，接口中提供了run方法，用来实现存储过程的调用。
 简单描述代码过程
-
 在service类中写了一个内部类来实现ICallback接口，并写了一个方法调用内部类。
 
-borrow为mysql的存储过程名，其中有两个参数，两个返回">
-<meta property="og:updated_time" content="2016-07-11T07:41:57.439Z">
+borrow为mysql的存储过程名，其中有两个参数，两个返回值">
+<meta property="og:updated_time" content="2016-07-11T07:46:59.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JFinal调用Mysql存储过程方法">
 <meta name="twitter:description" content="JFinal提供了Db+Record的模式，而其中有一个方法是这样的Db.execute(ICallback),。
 ICallback是JFinal提供的调用存储过程的接口，接口中提供了run方法，用来实现存储过程的调用。
 简单描述代码过程
-
 在service类中写了一个内部类来实现ICallback接口，并写了一个方法调用内部类。
 
-borrow为mysql的存储过程名，其中有两个参数，两个返回">
+borrow为mysql的存储过程名，其中有两个参数，两个返回值">
 
 
 
@@ -325,8 +322,7 @@ borrow为mysql的存储过程名，其中有两个参数，两个返回">
       
         <p>JFinal提供了Db+Record的模式，而其中有一个方法是这样的Db.execute(ICallback),。</p>
 <p>ICallback是JFinal提供的调用存储过程的接口，接口中提供了run方法，用来实现存储过程的调用。</p>
-<p>简单描述代码过程</p>
-<ol>
+<h3 id="简单描述代码过程"><a href="#简单描述代码过程" class="headerlink" title="简单描述代码过程"></a>简单描述代码过程</h3><ol>
 <li><p>在service类中写了一个内部类来实现ICallback接口，并写了一个方法调用内部类。</p>
 </li>
 <li><p>borrow为mysql的存储过程名，其中有两个参数，两个返回值 reason，result为返回值。</p>
@@ -335,9 +331,9 @@ borrow为mysql的存储过程名，其中有两个参数，两个返回">
 </li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.sql.CallableStatement;</div><div class="line"><span class="keyword">import</span> java.sql.Connection;</div><div class="line"><span class="keyword">import</span> java.sql.SQLException;</div><div class="line"><span class="keyword">import</span> com.jfinal.plugin.activerecord.Db;</div><div class="line"><span class="keyword">import</span> com.jfinal.plugin.activerecord.DbKit;</div><div class="line"><span class="keyword">import</span> com.jfinal.plugin.activerecord.ICallback;</div></pre></td></tr></table></figure>
-<a id="more"></a>
 <ol>
-<li>示例代码如下：</li>
+<li>示例代码如下：<a id="more"></a>
+</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">view plain copy</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BorrowService</span></span>&#123;  </div><div class="line"><span class="comment">//内部类开始  </span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BorrowDbPro</span> <span class="keyword">implements</span> <span class="title">ICallback</span> </span>&#123;  </div><div class="line">    <span class="keyword">public</span> String oid = <span class="keyword">null</span>;  </div><div class="line">    <span class="keyword">public</span> String reader_id=<span class="keyword">null</span>;  </div><div class="line">    <span class="keyword">int</span> result;  </div><div class="line">    <span class="keyword">public</span> String reason=<span class="string">"数据库意外,请重试"</span>;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(Connection conn)</span> <span class="keyword">throws</span> SQLException </span>&#123;      </div><div class="line">    CallableStatement proc = <span class="keyword">null</span>;  </div><div class="line">           <span class="keyword">try</span> &#123;             </div><div class="line">   </div><div class="line">              proc = (CallableStatement) conn.prepareCall(<span class="string">"&#123; call borrow(?,?,?,?) &#125;"</span>); <span class="comment">// borrow为mysql的存储过程名，其中有两个参数，两个返回值  </span></div><div class="line">             proc.setString(<span class="number">1</span>, oid);<span class="comment">//设置参数值  </span></div><div class="line">             proc.setString(<span class="number">2</span>, reader_id);  </div><div class="line">             proc.registerOutParameter(<span class="number">3</span>, java.sql.Types.INTEGER);<span class="comment">//设置返回值类型  </span></div><div class="line">             proc.registerOutParameter(<span class="number">4</span>, java.sql.Types.VARCHAR);  </div><div class="line">            proc.execute();  </div><div class="line">   </div><div class="line">            result =  proc.getInt(<span class="number">3</span>);<span class="comment">//得到返回值  </span></div><div class="line">            reason=proc.getString(<span class="number">4</span>);  </div><div class="line">      &#125;<span class="keyword">catch</span>(Exception e)&#123;  </div><div class="line">              e.printStackTrace();  </div><div class="line">       &#125; <span class="keyword">finally</span> &#123;  </div><div class="line">            DbKit.close(proc, conn);  </div><div class="line">          &#125;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">&#125;  </div><div class="line"><span class="comment">//内部类结束  </span></div><div class="line"><span class="comment">//调用内部类方法  </span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">trackresult</span><span class="params">(String reader_id)</span></span>&#123;<span class="comment">//可以加参数  </span></div><div class="line">           BorrowDbPro  borrowDbPro =<span class="keyword">new</span> BorrowDbPro();  </div><div class="line">             borrowDbPro.reader_id=reader_id;  </div><div class="line">            Db.execute(borrowDbPro);  </div><div class="line">            String reason=borrowDbPro.reason;    </div><div class="line">  &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
@@ -495,7 +491,7 @@ borrow为mysql的存储过程名，其中有两个参数，两个返回">
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单描述代码过程"><span class="nav-number">1.</span> <span class="nav-text">简单描述代码过程</span></a></li></ol></div>
             
           </div>
         </section>
