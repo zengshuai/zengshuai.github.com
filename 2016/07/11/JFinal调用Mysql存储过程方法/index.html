@@ -84,24 +84,34 @@
 
 
 
-<meta name="description" content="Git 每次进行 ==Pull== 和==Push== 操作时都要输入用户名和密码， 非常不便。  现在只需要增加一个配置文件就可以搞定：
-Linux/Unix/Mac 系统用户目录下，新建一个 ~/.netrc 文件(touch .netrc)， 将 git 服务器， 用户名以及密码记录在这个文件， 如下所示：
-123machine github.comlogin zengshuai">
+<meta name="description" content="JFinal提供了Db+Record的模式，而其中有一个方法是这样的Db.execute(ICallback),。
+ICallback是JFinal提供的调用存储过程的接口，接口中提供了run方法，用来实现存储过程的调用。
+简单描述代码过程
+
+在service类中写了一个内部类来实现ICallback接口，并写了一个方法调用内部类。
+
+borrow为mysql的存储过程名，其中有两个参数，两个返回">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git pull or push 免输入用户名和密码">
-<meta property="og:url" content="http://localhost/2016/07/07/git-pull-or-push-免输入用户名和密码/index.html">
+<meta property="og:title" content="JFinal调用Mysql存储过程方法">
+<meta property="og:url" content="http://localhost/2016/07/11/JFinal调用Mysql存储过程方法/index.html">
 <meta property="og:site_name" content="Zsh">
-<meta property="og:description" content="Git 每次进行 ==Pull== 和==Push== 操作时都要输入用户名和密码， 非常不便。  现在只需要增加一个配置文件就可以搞定：
-Linux/Unix/Mac 系统用户目录下，新建一个 ~/.netrc 文件(touch .netrc)， 将 git 服务器， 用户名以及密码记录在这个文件， 如下所示：
-123machine github.comlogin zengshuai">
-<meta property="og:image" content="http://beginor.github.io/assets/post-images/user-var-home.png">
-<meta property="og:updated_time" content="2016-07-07T07:31:46.590Z">
+<meta property="og:description" content="JFinal提供了Db+Record的模式，而其中有一个方法是这样的Db.execute(ICallback),。
+ICallback是JFinal提供的调用存储过程的接口，接口中提供了run方法，用来实现存储过程的调用。
+简单描述代码过程
+
+在service类中写了一个内部类来实现ICallback接口，并写了一个方法调用内部类。
+
+borrow为mysql的存储过程名，其中有两个参数，两个返回">
+<meta property="og:updated_time" content="2016-07-11T03:49:12.654Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git pull or push 免输入用户名和密码">
-<meta name="twitter:description" content="Git 每次进行 ==Pull== 和==Push== 操作时都要输入用户名和密码， 非常不便。  现在只需要增加一个配置文件就可以搞定：
-Linux/Unix/Mac 系统用户目录下，新建一个 ~/.netrc 文件(touch .netrc)， 将 git 服务器， 用户名以及密码记录在这个文件， 如下所示：
-123machine github.comlogin zengshuai">
-<meta name="twitter:image" content="http://beginor.github.io/assets/post-images/user-var-home.png">
+<meta name="twitter:title" content="JFinal调用Mysql存储过程方法">
+<meta name="twitter:description" content="JFinal提供了Db+Record的模式，而其中有一个方法是这样的Db.execute(ICallback),。
+ICallback是JFinal提供的调用存储过程的接口，接口中提供了run方法，用来实现存储过程的调用。
+简单描述代码过程
+
+在service类中写了一个内部类来实现ICallback接口，并写了一个方法调用内部类。
+
+borrow为mysql的存储过程名，其中有两个参数，两个返回">
 
 
 
@@ -122,9 +132,9 @@ Linux/Unix/Mac 系统用户目录下，新建一个 ~/.netrc 文件(touch .netrc
 
 
 
-  <link rel="canonical" href="http://localhost/2016/07/07/git-pull-or-push-免输入用户名和密码/"/>
+  <link rel="canonical" href="http://localhost/2016/07/11/JFinal调用Mysql存储过程方法/"/>
 
-  <title> git pull or push 免输入用户名和密码 | Zsh </title>
+  <title> JFinal调用Mysql存储过程方法 | Zsh </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -264,7 +274,7 @@ Linux/Unix/Mac 系统用户目录下，新建一个 ~/.netrc 文件(touch .netrc
             
             
               
-                git pull or push 免输入用户名和密码
+                JFinal调用Mysql存储过程方法
               
             
           </h1>
@@ -276,8 +286,8 @@ Linux/Unix/Mac 系统用户目录下，新建一个 ~/.netrc 文件(touch .netrc
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-07T15:19:25+08:00" content="2016-07-07">
-              2016-07-07
+            <time itemprop="dateCreated" datetime="2016-07-11T11:48:27+08:00" content="2016-07-11">
+              2016-07-11
             </time>
           </span>
 
@@ -304,16 +314,22 @@ Linux/Unix/Mac 系统用户目录下，新建一个 ~/.netrc 文件(touch .netrc
       
 
       
-        <p>Git 每次进行 ==Pull== 和==Push== 操作时都要输入用户名和密码， 非常不便。  现在只需要增加一个配置文件就可以搞定：</p>
-<h2 id="Linux-Unix-Mac-系统"><a href="#Linux-Unix-Mac-系统" class="headerlink" title="Linux/Unix/Mac 系统"></a>Linux/Unix/Mac 系统</h2><p>用户目录下，新建一个 ~/.netrc 文件(touch .netrc)， 将 git 服务器， 用户名以及密码记录在这个文件， 如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">machine github.com</div><div class="line">login zengshuai        </div><div class="line">password your-password</div></pre></td></tr></table></figure>
-<p>如果有多个 server 就重复上面的三行， 分别输入对应的服务器、 用户名和密码即可；</p>
-<p><strong>~ 表示用户主目录， 如果你的用户名是 zhang ， 那么 ~ 对应的目录是 /Users/zhang 。</strong></p>
-<h2 id="Windows-系统"><a href="#Windows-系统" class="headerlink" title="Windows 系统"></a>Windows 系统</h2><p>在 Windows 平台上， 稍微麻烦一些， 但是也能实现, 需要先添加一个用户变量 %HOME% ， 如下所示：</p>
-<p><img src="http://beginor.github.io/assets/post-images/user-var-home.png" alt="image"></p>
-<p>接下来在 %HOME% 变量指向的目录下新建一个名称为 _netrc 的文件， 内容与上面的一样， 将 git 服务器， 用户名以及密码记录在这个文件， 如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">machine github.com</div><div class="line">login zengshuai        </div><div class="line">password your-password</div></pre></td></tr></table></figure>
-<p>有了 netrc 文件， 使用 git 时就不用再输入用户名和密码了。</p>
+        <p>JFinal提供了Db+Record的模式，而其中有一个方法是这样的Db.execute(ICallback),。</p>
+<p>ICallback是JFinal提供的调用存储过程的接口，接口中提供了run方法，用来实现存储过程的调用。</p>
+<p>简单描述代码过程</p>
+<ol>
+<li><p>在service类中写了一个内部类来实现ICallback接口，并写了一个方法调用内部类。</p>
+</li>
+<li><p>borrow为mysql的存储过程名，其中有两个参数，两个返回值 reason，result为返回值。</p>
+</li>
+<li><p>引用包应该如下，注意是java.sql.CallableStatement和java.sql.Connection</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import java.sql.CallableStatement;</div><div class="line">import java.sql.Connection;</div><div class="line">import java.sql.SQLException;</div><div class="line">import com.jfinal.plugin.activerecord.Db;</div><div class="line">import com.jfinal.plugin.activerecord.DbKit;</div><div class="line">import com.jfinal.plugin.activerecord.ICallback;</div></pre></td></tr></table></figure>
+<ol>
+<li>示例代码如下：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">view plain copy</div><div class="line">public class BorrowService&#123;  </div><div class="line">//内部类开始  </div><div class="line">class BorrowDbPro implements ICallback &#123;  </div><div class="line">    public String oid = null;  </div><div class="line">    public String reader_id=null;  </div><div class="line">    int result;  </div><div class="line">    public String reason=&quot;数据库意外,请重试&quot;;  </div><div class="line">    public void run(Connection conn) throws SQLException &#123;      </div><div class="line">    CallableStatement proc = null;  </div><div class="line">           try &#123;             </div><div class="line">   </div><div class="line">              proc = (CallableStatement) conn.prepareCall(&quot;&#123; call borrow(?,?,?,?) &#125;&quot;); // borrow为mysql的存储过程名，其中有两个参数，两个返回值  </div><div class="line">             proc.setString(1, oid);//设置参数值  </div><div class="line">             proc.setString(2, reader_id);  </div><div class="line">             proc.registerOutParameter(3, java.sql.Types.INTEGER);//设置返回值类型  </div><div class="line">             proc.registerOutParameter(4, java.sql.Types.VARCHAR);  </div><div class="line">            proc.execute();  </div><div class="line">   </div><div class="line">            result =  proc.getInt(3);//得到返回值  </div><div class="line">            reason=proc.getString(4);  </div><div class="line">      &#125;catch(Exception e)&#123;  </div><div class="line">              e.printStackTrace();  </div><div class="line">       &#125; finally &#123;  </div><div class="line">            DbKit.close(proc, conn);  </div><div class="line">          &#125;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">&#125;  </div><div class="line">//内部类结束  </div><div class="line">//调用内部类方法  </div><div class="line">  public void trackresult(String reader_id)&#123;//可以加参数  </div><div class="line">           BorrowDbPro  borrowDbPro =new BorrowDbPro();  </div><div class="line">             borrowDbPro.reader_id=reader_id;  </div><div class="line">            Db.execute(borrowDbPro);  </div><div class="line">            String reason=borrowDbPro.reason;    </div><div class="line">  &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -339,17 +355,13 @@ Linux/Unix/Mac 系统用户目录下，新建一个 ~/.netrc 文件(touch .netrc
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/07/linux中如何删除文件/" rel="next" title="linux中如何删除文件">
-                <i class="fa fa-chevron-left"></i> linux中如何删除文件
+              <a href="/2016/07/07/git-pull-or-push-免输入用户名和密码/" rel="next" title="git pull or push 免输入用户名和密码">
+                <i class="fa fa-chevron-left"></i> git pull or push 免输入用户名和密码
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/11/JFinal调用Mysql存储过程方法/" rel="prev" title="JFinal调用Mysql存储过程方法">
-                JFinal调用Mysql存储过程方法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -449,7 +461,7 @@ Linux/Unix/Mac 系统用户目录下，新建一个 ~/.netrc 文件(touch .netrc
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-Unix-Mac-系统"><span class="nav-number">1.</span> <span class="nav-text">Linux/Unix/Mac 系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-系统"><span class="nav-number">2.</span> <span class="nav-text">Windows 系统</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
