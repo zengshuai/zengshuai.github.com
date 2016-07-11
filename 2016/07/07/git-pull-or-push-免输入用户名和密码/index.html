@@ -86,24 +86,21 @@
 
 <meta name="description" content="Git 每次进行 ==Pull== 和==Push== 操作时都要输入用户名和密码， 非常不便。  现在只需要增加一个配置文件就可以搞定：
 Linux/Unix/Mac 系统用户目录下，新建一个 ~/.netrc 文件(touch .netrc)， 将 git 服务器， 用户名以及密码记录在这个文件， 如下所示：
-machine github.com
-login zengshuai">
+123machine github.comlogin zengshuai">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git pull or push 免输入用户名和密码">
 <meta property="og:url" content="http://localhost/2016/07/07/git-pull-or-push-免输入用户名和密码/index.html">
 <meta property="og:site_name" content="Zsh-只恐双溪舴艋舟">
 <meta property="og:description" content="Git 每次进行 ==Pull== 和==Push== 操作时都要输入用户名和密码， 非常不便。  现在只需要增加一个配置文件就可以搞定：
 Linux/Unix/Mac 系统用户目录下，新建一个 ~/.netrc 文件(touch .netrc)， 将 git 服务器， 用户名以及密码记录在这个文件， 如下所示：
-machine github.com
-login zengshuai">
+123machine github.comlogin zengshuai">
 <meta property="og:image" content="http://beginor.github.io/assets/post-images/user-var-home.png">
-<meta property="og:updated_time" content="2016-07-11T07:12:49.810Z">
+<meta property="og:updated_time" content="2016-07-11T07:17:23.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git pull or push 免输入用户名和密码">
 <meta name="twitter:description" content="Git 每次进行 ==Pull== 和==Push== 操作时都要输入用户名和密码， 非常不便。  现在只需要增加一个配置文件就可以搞定：
 Linux/Unix/Mac 系统用户目录下，新建一个 ~/.netrc 文件(touch .netrc)， 将 git 服务器， 用户名以及密码记录在这个文件， 如下所示：
-machine github.com
-login zengshuai">
+123machine github.comlogin zengshuai">
 <meta name="twitter:image" content="http://beginor.github.io/assets/post-images/user-var-home.png">
 
 
@@ -318,18 +315,14 @@ login zengshuai">
       
         <p>Git 每次进行 ==Pull== 和==Push== 操作时都要输入用户名和密码， 非常不便。  现在只需要增加一个配置文件就可以搞定：</p>
 <h2 id="Linux-Unix-Mac-系统"><a href="#Linux-Unix-Mac-系统" class="headerlink" title="Linux/Unix/Mac 系统"></a>Linux/Unix/Mac 系统</h2><p>用户目录下，新建一个 ~/.netrc 文件(touch .netrc)， 将 git 服务器， 用户名以及密码记录在这个文件， 如下所示：</p>
-<pre><code>machine github.com
-login zengshuai        
-password your-password
-</code></pre><p>如果有多个 server 就重复上面的三行， 分别输入对应的服务器、 用户名和密码即可；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">machine github.com</div><div class="line">login zengshuai        </div><div class="line">password your-password</div></pre></td></tr></table></figure>
+<p>如果有多个 server 就重复上面的三行， 分别输入对应的服务器、 用户名和密码即可；</p>
 <p><strong>~ 表示用户主目录， 如果你的用户名是 zhang ， 那么 ~ 对应的目录是 /Users/zhang 。</strong></p>
 <h2 id="Windows-系统"><a href="#Windows-系统" class="headerlink" title="Windows 系统"></a>Windows 系统</h2><p>在 Windows 平台上， 稍微麻烦一些， 但是也能实现, 需要先添加一个用户变量 %HOME% ， 如下所示：</p>
 <p><img src="http://beginor.github.io/assets/post-images/user-var-home.png" alt="image"></p>
 <p>接下来在 %HOME% 变量指向的目录下新建一个名称为 _netrc 的文件， 内容与上面的一样， 将 git 服务器， 用户名以及密码记录在这个文件， 如下所示：</p>
-<pre><code>machine github.com
-login zengshuai        
-password your-password
-</code></pre><p>有了 netrc 文件， 使用 git 时就不用再输入用户名和密码了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">machine github.com</div><div class="line">login zengshuai        </div><div class="line">password your-password</div></pre></td></tr></table></figure>
+<p>有了 netrc 文件， 使用 git 时就不用再输入用户名和密码了。</p>
 
       
     </div>

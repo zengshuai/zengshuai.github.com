@@ -322,54 +322,12 @@
 <li><p>引用包应该如下，注意是java.sql.CallableStatement和java.sql.Connection</p>
 </li>
 </ol>
-<pre><code>import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.SQLException;
-import com.jfinal.plugin.activerecord.Db;
-import com.jfinal.plugin.activerecord.DbKit;
-import com.jfinal.plugin.activerecord.ICallback;
-</code></pre><ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.sql.CallableStatement;</div><div class="line"><span class="keyword">import</span> java.sql.Connection;</div><div class="line"><span class="keyword">import</span> java.sql.SQLException;</div><div class="line"><span class="keyword">import</span> com.jfinal.plugin.activerecord.Db;</div><div class="line"><span class="keyword">import</span> com.jfinal.plugin.activerecord.DbKit;</div><div class="line"><span class="keyword">import</span> com.jfinal.plugin.activerecord.ICallback;</div></pre></td></tr></table></figure>
+<ol>
 <li>示例代码如下：</li>
 </ol>
-<pre><code>view plain copy
-public class BorrowService{  
-//内部类开始  
-class BorrowDbPro implements ICallback {  
-    public String oid = null;  
-    public String reader_id=null;  
-    int result;  
-    public String reason=&quot;数据库意外,请重试&quot;;  
-    public void run(Connection conn) throws SQLException {      
-    CallableStatement proc = null;  
-           try {             
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">view plain copy</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BorrowService</span></span>&#123;  </div><div class="line"><span class="comment">//内部类开始  </span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BorrowDbPro</span> <span class="keyword">implements</span> <span class="title">ICallback</span> </span>&#123;  </div><div class="line">    <span class="keyword">public</span> String oid = <span class="keyword">null</span>;  </div><div class="line">    <span class="keyword">public</span> String reader_id=<span class="keyword">null</span>;  </div><div class="line">    <span class="keyword">int</span> result;  </div><div class="line">    <span class="keyword">public</span> String reason=<span class="string">"数据库意外,请重试"</span>;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(Connection conn)</span> <span class="keyword">throws</span> SQLException </span>&#123;      </div><div class="line">    CallableStatement proc = <span class="keyword">null</span>;  </div><div class="line">           <span class="keyword">try</span> &#123;             </div><div class="line">   </div><div class="line">              proc = (CallableStatement) conn.prepareCall(<span class="string">"&#123; call borrow(?,?,?,?) &#125;"</span>); <span class="comment">// borrow为mysql的存储过程名，其中有两个参数，两个返回值  </span></div><div class="line">             proc.setString(<span class="number">1</span>, oid);<span class="comment">//设置参数值  </span></div><div class="line">             proc.setString(<span class="number">2</span>, reader_id);  </div><div class="line">             proc.registerOutParameter(<span class="number">3</span>, java.sql.Types.INTEGER);<span class="comment">//设置返回值类型  </span></div><div class="line">             proc.registerOutParameter(<span class="number">4</span>, java.sql.Types.VARCHAR);  </div><div class="line">            proc.execute();  </div><div class="line">   </div><div class="line">            result =  proc.getInt(<span class="number">3</span>);<span class="comment">//得到返回值  </span></div><div class="line">            reason=proc.getString(<span class="number">4</span>);  </div><div class="line">      &#125;<span class="keyword">catch</span>(Exception e)&#123;  </div><div class="line">              e.printStackTrace();  </div><div class="line">       &#125; <span class="keyword">finally</span> &#123;  </div><div class="line">            DbKit.close(proc, conn);  </div><div class="line">          &#125;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">&#125;  </div><div class="line"><span class="comment">//内部类结束  </span></div><div class="line"><span class="comment">//调用内部类方法  </span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">trackresult</span><span class="params">(String reader_id)</span></span>&#123;<span class="comment">//可以加参数  </span></div><div class="line">           BorrowDbPro  borrowDbPro =<span class="keyword">new</span> BorrowDbPro();  </div><div class="line">             borrowDbPro.reader_id=reader_id;  </div><div class="line">            Db.execute(borrowDbPro);  </div><div class="line">            String reason=borrowDbPro.reason;    </div><div class="line">  &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
-              proc = (CallableStatement) conn.prepareCall(&quot;{ call borrow(?,?,?,?) }&quot;); // borrow为mysql的存储过程名，其中有两个参数，两个返回值  
-             proc.setString(1, oid);//设置参数值  
-             proc.setString(2, reader_id);  
-             proc.registerOutParameter(3, java.sql.Types.INTEGER);//设置返回值类型  
-             proc.registerOutParameter(4, java.sql.Types.VARCHAR);  
-            proc.execute();  
-
-            result =  proc.getInt(3);//得到返回值  
-            reason=proc.getString(4);  
-      }catch(Exception e){  
-              e.printStackTrace();  
-       } finally {  
-            DbKit.close(proc, conn);  
-          }  
-    }  
-
-}  
-//内部类结束  
-//调用内部类方法  
-  public void trackresult(String reader_id){//可以加参数  
-           BorrowDbPro  borrowDbPro =new BorrowDbPro();  
-             borrowDbPro.reader_id=reader_id;  
-            Db.execute(borrowDbPro);  
-            String reason=borrowDbPro.reason;    
-  }  
-}
-</code></pre>
           
         
       
@@ -483,18 +441,14 @@ class BorrowDbPro implements ICallback {
           
             <p>Git 每次进行 ==Pull== 和==Push== 操作时都要输入用户名和密码， 非常不便。  现在只需要增加一个配置文件就可以搞定：</p>
 <h2 id="Linux-Unix-Mac-系统"><a href="#Linux-Unix-Mac-系统" class="headerlink" title="Linux/Unix/Mac 系统"></a>Linux/Unix/Mac 系统</h2><p>用户目录下，新建一个 ~/.netrc 文件(touch .netrc)， 将 git 服务器， 用户名以及密码记录在这个文件， 如下所示：</p>
-<pre><code>machine github.com
-login zengshuai        
-password your-password
-</code></pre><p>如果有多个 server 就重复上面的三行， 分别输入对应的服务器、 用户名和密码即可；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">machine github.com</div><div class="line">login zengshuai        </div><div class="line">password your-password</div></pre></td></tr></table></figure>
+<p>如果有多个 server 就重复上面的三行， 分别输入对应的服务器、 用户名和密码即可；</p>
 <p><strong>~ 表示用户主目录， 如果你的用户名是 zhang ， 那么 ~ 对应的目录是 /Users/zhang 。</strong></p>
 <h2 id="Windows-系统"><a href="#Windows-系统" class="headerlink" title="Windows 系统"></a>Windows 系统</h2><p>在 Windows 平台上， 稍微麻烦一些， 但是也能实现, 需要先添加一个用户变量 %HOME% ， 如下所示：</p>
 <p><img src="http://beginor.github.io/assets/post-images/user-var-home.png" alt="image"></p>
 <p>接下来在 %HOME% 变量指向的目录下新建一个名称为 _netrc 的文件， 内容与上面的一样， 将 git 服务器， 用户名以及密码记录在这个文件， 如下所示：</p>
-<pre><code>machine github.com
-login zengshuai        
-password your-password
-</code></pre><p>有了 netrc 文件， 使用 git 时就不用再输入用户名和密码了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">machine github.com</div><div class="line">login zengshuai        </div><div class="line">password your-password</div></pre></td></tr></table></figure>
+<p>有了 netrc 文件， 使用 git 时就不用再输入用户名和密码了。</p>
 
           
         
