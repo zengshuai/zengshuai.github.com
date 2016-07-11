@@ -100,7 +100,7 @@ ICallback是JFinal提供的调用存储过程的接口，接口中提供了run�
 在service类中写了一个内部类来实现ICallback接口，并写了一个方法调用内部类。
 
 borrow为mysql的存储过程名，其中有两个参数，两个返回值">
-<meta property="og:updated_time" content="2016-07-11T07:46:59.235Z">
+<meta property="og:updated_time" content="2016-07-11T08:13:34.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JFinal调用Mysql存储过程方法">
 <meta name="twitter:description" content="JFinal提供了Db+Record的模式，而其中有一个方法是这样的Db.execute(ICallback),。
@@ -330,7 +330,7 @@ borrow为mysql的存储过程名，其中有两个参数，两个返回值">
 <li><p>引用包应该如下，注意是java.sql.CallableStatement和java.sql.Connection</p>
 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.sql.CallableStatement;</div><div class="line"><span class="keyword">import</span> java.sql.Connection;</div><div class="line"><span class="keyword">import</span> java.sql.SQLException;</div><div class="line"><span class="keyword">import</span> com.jfinal.plugin.activerecord.Db;</div><div class="line"><span class="keyword">import</span> com.jfinal.plugin.activerecord.DbKit;</div><div class="line"><span class="keyword">import</span> com.jfinal.plugin.activerecord.ICallback;</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">import</span> <span class="selector-tag">java</span><span class="selector-class">.sql</span><span class="selector-class">.CallableStatement</span>;</div><div class="line"><span class="selector-tag">import</span> <span class="selector-tag">java</span><span class="selector-class">.sql</span><span class="selector-class">.Connection</span>;</div><div class="line"><span class="selector-tag">import</span> <span class="selector-tag">java</span><span class="selector-class">.sql</span><span class="selector-class">.SQLException</span>;</div><div class="line"><span class="selector-tag">import</span> <span class="selector-tag">com</span><span class="selector-class">.jfinal</span><span class="selector-class">.plugin</span><span class="selector-class">.activerecord</span><span class="selector-class">.Db</span>;</div><div class="line"><span class="selector-tag">import</span> <span class="selector-tag">com</span><span class="selector-class">.jfinal</span><span class="selector-class">.plugin</span><span class="selector-class">.activerecord</span><span class="selector-class">.DbKit</span>;</div><div class="line"><span class="selector-tag">import</span> <span class="selector-tag">com</span><span class="selector-class">.jfinal</span><span class="selector-class">.plugin</span><span class="selector-class">.activerecord</span><span class="selector-class">.ICallback</span>;</div></pre></td></tr></table></figure>
 <ol>
 <li>示例代码如下：<a id="more"></a>
 </li>
